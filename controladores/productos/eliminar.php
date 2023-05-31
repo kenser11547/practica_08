@@ -3,7 +3,7 @@ require '../../modelos/Clientes.php';
 
 
     try {
-        $cliente = new Cliente ($_GET);
+        $cliente = new Cliente($_GET);
         $resultado = $cliente->eliminar();
 
     } catch (PDOException $e) {
