@@ -17,10 +17,25 @@ class Cliente extends Conexion{
     }
 
     public function guardar(){
-        $sql = "INSERT INTO clientes(cliente_nombre, cliente_nit) values('$this->cliente_nombre','$this->cliente_nit')";
+        // Validar el NIT antes de guardar los datos
+        if (!$this->validarNit($this->cliente_nit)) {
+            echo "El NIT ingresado es inválido. No se guardarán los datos.";
+            // Detener la ejecución del código o redirigir a otra página, según sea necesario
+            exit();
+        }
+    
+        $sql = "INSERT INTO clientes (cliente_nombre, cliente_nit) VALUES ('$this->cliente_nombre','$this->cliente_nit')";
         $resultado = self::ejecutar($sql);
+    
+        if ($resultado) {
+            echo "Datos guardados correctamente. El NIT es válido.";
+        } else {
+            echo "Error al guardar los datos.";
+        }
+        
         return $resultado;
     }
+    
 
     public function buscar(){
         $sql = "SELECT * from clientes where cliente_situacion = 1 ";
@@ -42,41 +57,45 @@ class Cliente extends Conexion{
     }
 
     public function modificar(){
-        $sql = "UPDATE clientes SET cliente_nombre = '$this->cliente_nombre', cliente_nit = $this->cliente_nit where cliente_id = $this->cliente_id";
+        $sql = "UPDATE clientes  SET cliente_nombre = '$this->cliente_nombre', cliente_nit = $this->cliente_nit where cliente_id = $this->cliente_id";
         
         $resultado = self::ejecutar($sql);
         return $resultado;
     }
 
     public function eliminar(){
-        $sql = "UPDATE clientes SET cliente_situacion = 0 where cliente_id = $this->cliente_id";
+        $sql = "UPDATE clientes  SET cliente_situacion = 0 where cliente_id = $this->cliente_id";
         
         $resultado = self::ejecutar($sql);
         return $resultado;
     }
-    public function validarNIT($nit) {
-        // Obtener el número de verificación y los dígitos antes del guión
-        $partes = explode('-', $nit);
-        $verificador = end($partes);
-        $digitos = str_replace('-', '', $nit);
+
+    public function validarNit($cliente_nit){
+        // Eliminar cualquier guión o espacio en blanco del NIT
+        $cliente_nit = str_replace(['-', ' '], '', $cliente_nit);
     
-        // Asignar posiciones y multiplicar cada dígito
-        $posiciones = [2, 3, 4, 5, 6, 7, 8];
-        $suma = 0;
-    
-        foreach ($posiciones as $i => $posicion) {
-            $suma += intval($digitos[$i]) * $posicion;
+        // Verificar si el NIT tiene 8 dígitos
+        if (strlen($cliente_nit) !== 8) {
+            return false;
         }
     
-        // Calcular el residuo y el dígito verificador esperado
+        // Realizar la validación del NIT según el algoritmo dado
+        $suma = 0;
+        for ($i = 0; $i < 7; $i++) {
+            $suma += intval($cliente_nit[$i]) * (8 - $i);
+        }
         $residuo = $suma % 11;
-        $verificador_esperado = ($residuo === 0) ? 0 : (11 - $residuo);
+        $respuesta = 11 - $residuo;
     
-        // Validar el NIT comparando el verificador obtenido con el esperado
-        if (is_numeric($verificador) && intval($verificador) === $verificador_esperado) {
+        $digitoVerificador = intval($cliente_nit[7]);
+    
+        // Comprobar si el residuo es igual al dígito verificador
+        if ($respuesta == $digitoVerificador || ($respuesta == 10 && $digitoVerificador == 0)) {
             return true;
         } else {
             return false;
         }
     }
+    
+    
 }
