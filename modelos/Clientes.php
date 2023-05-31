@@ -21,12 +21,18 @@ class Cliente extends Conexion{
         if (!$this->validarNit($this->cliente_nit)) {
             echo "El NIT ingresado es inválido. No se guardarán los datos.";
             // Detener la ejecución del código o redirigir a otra página, según sea necesario
+            echo '<div class="row">
+                    <div class="col-lg-4">
+                        <a href="/practica_08/vistas/productos/index.php" class="btn btn-info w-100">Volver al formulario</a>
+                    </div>
+                </div>';
             exit();
         }
     
         $sql = "INSERT INTO clientes (cliente_nombre, cliente_nit) VALUES ('$this->cliente_nombre','$this->cliente_nit')";
         $resultado = self::ejecutar($sql);
-    
+
+           
         if ($resultado) {
             echo "Datos guardados correctamente. El NIT es válido.";
         } else {
