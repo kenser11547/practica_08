@@ -19,7 +19,7 @@ class Cliente extends Conexion{
     public function guardar(){
         // Validar el NIT antes de guardar los datos
         if (!$this->validarNit($this->cliente_nit)) {
-            echo "<center>El NIT ingresado es inválido. No se guardarán los datos.</center>";
+            echo "<center><h1>El NIT ingresado es inválido. No se guardarán los datos.</h1><center>";
             // Detener la ejecución del código o redirigir a otra página, según sea necesario
             echo '<div class="row">
                     <div class="col-lg-4">
@@ -115,7 +115,7 @@ class Cliente extends Conexion{
     <title>Resultados</title>
     <style>
     body {
-        background-image: url(./fondo.jpg);
+        background-image: url(./images.jfif);
         background-size:cover;
         background-attachment: fixed;
     }
@@ -143,6 +143,7 @@ class Cliente extends Conexion{
         justify-content: center;
         width: 600px;
         margin-left:450px;
+        margin-top:25px;
     }
     </style>
 </head>

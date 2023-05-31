@@ -26,7 +26,7 @@ try {
     <title>Resultados</title>
     <style>
         body {
-            background-image: url(./fondo.jpg);
+            background-image: url(./image.jpg);
             background-size:cover;
             background-attachment: fixed;
 

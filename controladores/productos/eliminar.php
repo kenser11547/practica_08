@@ -69,7 +69,7 @@ require '../../modelos/Clientes.php';
             justify-content: center;
             width: 600px;
             margin-top: 75px;
-            margin-left: 650px;
+            margin-left: 450px;
         }
         #alert{
             margin-left:60px;
