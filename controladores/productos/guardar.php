@@ -36,11 +36,18 @@ if($_POST['cliente_nombre'] != '' && $_POST['cliente_nit'] != ''){
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
     <title>Resultados</title>
     <style>
+                        * {
+            margin: 15;
+            padding: 5;
+            box-sizing: border-box;
+        }
+        /*aqui se diseña el cuerpo de la pagina*/
 
         body {
             background-image: url(./fondo.jpg);
             background-size:cover;
             background-attachment: fixed;
+            margin-left:0px;
 
         }
 
@@ -48,9 +55,9 @@ if($_POST['cliente_nombre'] != '' && $_POST['cliente_nit'] != ''){
         .container {
 
             justify-content: center;
-            width: 600px;
+            width: 100px;
             margin-top: 15px;
-            margin-left: 650px;
+            margin-left: 450px;
         }
     </style>
 </head>
