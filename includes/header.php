@@ -41,7 +41,7 @@
             justify-content: center;
             width: 700px;
             margin-top: 15px;
-            margin-left: 350px;
+            margin-left: 450px;
         }
         #alert{
             margin-left:60px;

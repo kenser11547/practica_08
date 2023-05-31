@@ -72,11 +72,12 @@ if($_POST['cliente_nombre'] != '' && $_POST['cliente_nit']  != '' && $_POST['cli
         /*diseño del contenedor*/
         .container {
 
-            justify-content: center;
-            width: 1000px;
-            margin-top: 75px;
-            margin-left: 450px;
+        justify-content: center;
+        width: 100px;
+        margin-top: 15px;
+        margin-left: 450px;
         }
+                
         #alert{
             margin-left:60px;
         }
