@@ -19,7 +19,7 @@ class Cliente extends Conexion{
     public function guardar(){
         // Validar el NIT antes de guardar los datos
         if (!$this->validarNit($this->cliente_nit)) {
-            echo "El NIT ingresado es inválido. No se guardarán los datos.";
+            echo "<center>El NIT ingresado es inválido. No se guardarán los datos.</center>";
             // Detener la ejecución del código o redirigir a otra página, según sea necesario
             echo '<div class="row">
                     <div class="col-lg-4">
@@ -139,9 +139,10 @@ class Cliente extends Conexion{
         box-shadow: 1px 1px 10px gold;
     }
     /*diseño del contenedor*/
-    .container {
+    .row {
         justify-content: center;
         width: 600px;
+        margin-left:450px;
     }
     </style>
 </head>
