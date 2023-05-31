@@ -1,4 +1,4 @@
-create table cliente(
+create table clientes(
     cliente_id serial not null,
     cliente_nombre varchar(50) not null,
     cliente_nit varchar(20) not null,
