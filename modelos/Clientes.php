@@ -54,4 +54,29 @@ class Cliente extends Conexion{
         $resultado = self::ejecutar($sql);
         return $resultado;
     }
+    public function validarNIT($nit) {
+        // Obtener el número de verificación y los dígitos antes del guión
+        $partes = explode('-', $nit);
+        $verificador = end($partes);
+        $digitos = str_replace('-', '', $nit);
+    
+        // Asignar posiciones y multiplicar cada dígito
+        $posiciones = [2, 3, 4, 5, 6, 7, 8];
+        $suma = 0;
+    
+        foreach ($posiciones as $i => $posicion) {
+            $suma += intval($digitos[$i]) * $posicion;
+        }
+    
+        // Calcular el residuo y el dígito verificador esperado
+        $residuo = $suma % 11;
+        $verificador_esperado = ($residuo === 0) ? 0 : (11 - $residuo);
+    
+        // Validar el NIT comparando el verificador obtenido con el esperado
+        if (is_numeric($verificador) && intval($verificador) === $verificador_esperado) {
+            return true;
+        } else {
+            return false;
+        }
+    }
 }
