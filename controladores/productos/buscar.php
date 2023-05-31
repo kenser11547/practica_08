@@ -38,7 +38,7 @@ try {
             justify-content: center;
             width: 600px;
             margin-top: 5px;
-            margin-left: 390px;
+            margin-left: 450px;
             padding-left: 0px;
             padding: 10px;
         }
@@ -47,7 +47,7 @@ try {
 <body>
     <div class="container">
         <div class="row justify-content-center">
-            <div class="col-lg-8">
+            <div class="col-lg-12">
                 <table class="table table-bordered table-hover">
                     <thead class="table-dark">
                         <tr>
