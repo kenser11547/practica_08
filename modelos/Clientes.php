@@ -142,7 +142,7 @@ class Cliente extends Conexion{
     .row {
         justify-content: center;
         width: 600px;
-        margin-left:450px;
+        margin-left:0px;
         margin-top:25px;
     }
     </style>
