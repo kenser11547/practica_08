@@ -39,7 +39,7 @@
         .container {
 
             justify-content: center;
-            width: 800px;
+            width: 700px;
             margin-top: 15px;
             margin-left: 350px;
         }

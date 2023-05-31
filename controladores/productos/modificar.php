@@ -73,9 +73,9 @@ if($_POST['cliente_nombre'] != '' && $_POST['cliente_nit']  != '' && $_POST['cli
         .container {
 
             justify-content: center;
-            width: 600px;
+            width: 1000px;
             margin-top: 75px;
-            margin-left: 650px;
+            margin-left: 450px;
         }
         #alert{
             margin-left:60px;
